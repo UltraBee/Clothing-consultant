@@ -56,6 +56,7 @@
       <Variable x:TypeArguments="ui:GenericValue" Name="temperature" />
       <Variable x:TypeArguments="x:String" Name="outfitSuggestion" />
       <Variable x:TypeArguments="x:String" Name="rainGear" />
+      <Variable x:TypeArguments="x:String" Name="country" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -73,20 +74,20 @@
           <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
-      <ui:OpenBrowser UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Open Browser" Hidden="False" sap:VirtualizedContainerService.HintSize="436,802" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" NewSession="True" Private="False" Url="https://google.com">
+      <ui:OpenBrowser UiBrowser="{x:Null}" BrowserType="IE" DisplayName="Open Browser" Hidden="False" sap:VirtualizedContainerService.HintSize="436,893" sap2010:WorkflowViewState.IdRef="OpenBrowser_1" NewSession="True" Private="False" Url="https://google.com">
         <ui:OpenBrowser.Body>
           <ActivityAction x:TypeArguments="x:Object">
             <ActivityAction.Argument>
               <DelegateInArgument x:TypeArguments="x:Object" Name="ContextTarget" />
             </ActivityAction.Argument>
-            <Sequence DisplayName="Scrap data from website" sap:VirtualizedContainerService.HintSize="406,663" sap2010:WorkflowViewState.IdRef="Sequence_4">
+            <Sequence DisplayName="Scrap data from website" sap:VirtualizedContainerService.HintSize="406,754" sap2010:WorkflowViewState.IdRef="Sequence_4">
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                   <x:Boolean x:Key="IsPinned">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="368,571" sap2010:WorkflowViewState.IdRef="Sequence_1">
+              <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="368,756" sap2010:WorkflowViewState.IdRef="Sequence_1">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -103,6 +104,22 @@
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:TypeInto>
+                <ui:GetFullText DisplayName="Get Full Text 'DIV  wob_loc'" sap:VirtualizedContainerService.HintSize="330,51" sap2010:WorkflowViewState.IdRef="GetFullText_3" IgnoreHidden="False">
+                  <ui:GetFullText.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="2331bba37257678aead8752d8d4170c8" Selector="&lt;webctrl id='wob_loc' tag='DIV' /&gt;" WaitForReady="INTERACTIVE" />
+                  </ui:GetFullText.Target>
+                  <ui:GetFullText.Text>
+                    <OutArgument x:TypeArguments="ui:GenericValue">[city]</OutArgument>
+                  </ui:GetFullText.Text>
+                </ui:GetFullText>
+                <ui:GetFullText DisplayName="Get Full Text 'DIV  wob_loc'" sap:VirtualizedContainerService.HintSize="330,51" sap2010:WorkflowViewState.IdRef="GetFullText_4" IgnoreHidden="False">
+                  <ui:GetFullText.Target>
+                    <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="2331bba37257678aead8752d8d4170c8" Selector="&lt;webctrl id='wob_loc' tag='DIV' /&gt;" WaitForReady="INTERACTIVE" />
+                  </ui:GetFullText.Target>
+                  <ui:GetFullText.Text>
+                    <OutArgument x:TypeArguments="x:String">[country]</OutArgument>
+                  </ui:GetFullText.Text>
+                </ui:GetFullText>
                 <ui:GetFullText DisplayName="Get Full Text 'SPAN  wob_dc'" sap:VirtualizedContainerService.HintSize="330,51" sap2010:WorkflowViewState.IdRef="GetFullText_1" IgnoreHidden="False">
                   <ui:GetFullText.Target>
                     <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" TimeoutMS="{x:Null}" InformativeScreenshot="0ce8efb8ffaea0277fc01a347a94f7f8" Selector="&lt;webctrl id='wob_dc' tag='SPAN' /&gt;" WaitForReady="COMPLETE" />
@@ -126,7 +143,7 @@
                   </sap:WorkflowViewStateService.ViewState>
                 </ui:GetFullText>
                 <ui:CloseTab Browser="{x:Null}" DisplayName="Close Tab" sap:VirtualizedContainerService.HintSize="330,22" sap2010:WorkflowViewState.IdRef="CloseTab_1" />
-                <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="330,61" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;Temperature:&quot; + temperature + Environment.NewLine + &#xD;&#xA;&quot;Weather:&quot; + weather]" />
+                <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="330,64" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[&quot;Temperature:&quot; + temperature + Environment.NewLine + &#xD;&#xA;&quot;Weather:&quot; + weather]" />
               </Sequence>
             </Sequence>
           </ActivityAction>
@@ -138,7 +155,7 @@
         </sap:WorkflowViewStateService.ViewState>
       </ui:OpenBrowser>
     </Sequence>
-    <Flowchart DisplayName="Analyze the weather" sap:VirtualizedContainerService.HintSize="659,646" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart DisplayName="Analyze the weather" sap:VirtualizedContainerService.HintSize="216,51" sap2010:WorkflowViewState.IdRef="Flowchart_1">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
           <x:Boolean x:Key="IsExpanded">False</x:Boolean>
@@ -257,7 +274,7 @@
             <av:PointCollection x:Key="ConnectorLocation">340,185.5 340,226.5</av:PointCollection>
           </scg:Dictionary>
         </sap:WorkflowViewStateService.ViewState>
-        <If Condition="[weather.Contains(&quot;Rain&quot;) or weather.Contains(&quot;Showers&quot;) or weather.Contains(&quot;Thunderstorm&quot;)]" sap:VirtualizedContainerService.HintSize="480,206" sap2010:WorkflowViewState.IdRef="If_1">
+        <If Condition="[weather.Contains(&quot;Rain&quot;) or weather.Contains(&quot;Showers&quot;) or weather.Contains(&quot;Thunderstorm&quot;)]" sap:VirtualizedContainerService.HintSize="480,208" sap2010:WorkflowViewState.IdRef="If_1">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -279,6 +296,6 @@
         </FlowStep.Next>
       </FlowStep>
     </Flowchart>
-    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Display Suggestion" sap:VirtualizedContainerService.HintSize="216,51" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;The temperature in &quot; + city + &quot; is &quot; + temperature + &quot; degrees of Celsius.&quot; + vbCr +&#xD;&#xA;&quot;The weather is: &quot; + weather + vbCr + outfitSuggestion + rainGear]" TopMost="True" />
+    <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" Buttons="Ok" DisplayName="Display Suggestion" sap:VirtualizedContainerService.HintSize="330,59" sap2010:WorkflowViewState.IdRef="MessageBox_1" Text="[&quot;The temperature in &quot; + city + country + &quot; is &quot; + temperature + &quot; degrees of Celsius.&quot; + vbCr +&#xD;&#xA;&quot;The weather is: &quot; + weather + vbCr + outfitSuggestion + rainGear]" TopMost="True" />
   </Sequence>
 </Activity>
